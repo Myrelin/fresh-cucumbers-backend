@@ -29,11 +29,6 @@ public class MovieController {
         return movieStorage.addMovie();
     }
 
-    /*@GetMapping("/search?title={keyword}")
-    public Movie searchForMovie(@PathVariable("keyword") String keyword){
-
-        return omDbApiHandler.getSearchedMovieByTitle(keyword);
-    }*/
     @RequestMapping(value = "/search")
     public Movie api(@RequestParam("title")String name){
 

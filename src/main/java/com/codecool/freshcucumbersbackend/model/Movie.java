@@ -15,6 +15,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Component
 public class Movie implements Serializable {
+
     @JsonProperty("imdbID")
     private String id;
 
@@ -29,6 +30,4 @@ public class Movie implements Serializable {
 
     @JsonProperty("Poster")
     private String poster;
-
-
 }
