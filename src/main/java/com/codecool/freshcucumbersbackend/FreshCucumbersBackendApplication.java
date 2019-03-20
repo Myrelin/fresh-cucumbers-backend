@@ -1,5 +1,6 @@
 package com.codecool.freshcucumbersbackend;
 
+import com.codecool.freshcucumbersbackend.controller.MovieController;
 import com.codecool.freshcucumbersbackend.model.Movie;
 import com.codecool.freshcucumbersbackend.service.MovieCreator;
 import org.slf4j.Logger;
@@ -15,19 +16,22 @@ public class FreshCucumbersBackendApplication {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SpringBootApplication.class);
 
-/*    @Autowired*/
-/*    private MovieCreator movieCreator;*/
+    @Autowired
+    private MovieCreator movieCreator;
+
+    @Autowired
+    private MovieController movieController;
 
     public static void main(String[] args) {
         SpringApplication.run(FreshCucumbersBackendApplication.class, args);
     }
 
-/*
     @PostConstruct
     public void afterInit() {
+        movieController.populate();
+
 
 
     }
-*/
 
 }

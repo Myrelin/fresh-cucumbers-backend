@@ -24,7 +24,6 @@ public class MovieController {
 
     @GetMapping("/index")
     public List<Movie> movies() {
-        populate();
         return movieStorage.getMovies();
     }
 

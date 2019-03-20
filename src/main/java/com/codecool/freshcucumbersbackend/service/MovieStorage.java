@@ -27,10 +27,6 @@ public class MovieStorage {
         movies.add(movie);
     }
 
-    public void populateMovieList(){
-
-    }
-
     public List<Movie> getMovies() {
         return movies;
     }
