@@ -22,6 +22,7 @@ public class MovieController {
     @Autowired
     private MovieStorage movieStorage;
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/index")
     public List<Movie> movies() {
         return movieStorage.getMovies();
