@@ -1,6 +1,7 @@
 package com.codecool.freshcucumbersbackend.apihandler;
 
 import com.codecool.freshcucumbersbackend.model.Movie;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
@@ -19,8 +20,7 @@ public class OMDbApiHandler {
 
         RestTemplate restTemplate = new RestTemplate();
         Movie movie = restTemplate
-                .getForObject(url,Movie.class);
-        System.out.println(movie);
+                .getForObject(url, Movie.class);
         return movie;
     }
 
