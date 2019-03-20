@@ -13,8 +13,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/movie")
 public class MovieController {
-    private List<String> top10Movie = new LinkedList<>(Arrays.asList("The shawshank redemption","The Godfather", "The Godfather: part II", "The Dark Knight", "12 angry men",
-            "Iron man","Schindler's List","The lord of the rings: The Return Of the king","Pulp Fiction","Fight Club"));
 
 
     @Autowired
@@ -25,14 +23,8 @@ public class MovieController {
 
     @GetMapping("/index")
     public List<Movie> movies() {
-        //movieStorage.populateMovieList();
         populate();
         return movieStorage.getMovies();
-    }
-
-    @GetMapping("/add")
-    public Movie createMovie() {
-        return movieStorage.addMovie();
     }
 
     @RequestMapping(value = "/search")
@@ -42,6 +34,9 @@ public class MovieController {
     }
 
     public void populate(){
+        List<String> top10Movie = new LinkedList<>(Arrays.asList("The shawshank redemption","The Godfather", "The Godfather: part II", "The Dark Knight", "12 angry men",
+                "Iron man","Schindler's List","The lord of the rings: The Return Of the king","Pulp Fiction","Fight Club"));
+
         for (int i = 0; i < top10Movie.size() ; i++) {
             Movie movie = SearchApiByTitle(top10Movie.get(i));
             movieStorage.addTopTenMovies(movie);

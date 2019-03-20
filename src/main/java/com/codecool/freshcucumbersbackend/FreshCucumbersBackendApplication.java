@@ -15,17 +15,19 @@ public class FreshCucumbersBackendApplication {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SpringBootApplication.class);
 
-    @Autowired
-    private MovieCreator movieCreator;
+/*    @Autowired*/
+/*    private MovieCreator movieCreator;*/
 
     public static void main(String[] args) {
         SpringApplication.run(FreshCucumbersBackendApplication.class, args);
     }
 
+/*
     @PostConstruct
     public void afterInit() {
-        LOGGER.info(movieCreator.createMovie().toString());
+
 
     }
+*/
 
 }

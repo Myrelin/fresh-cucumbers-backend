@@ -14,14 +14,14 @@ public class MovieStorage {
 
     private List<Movie> movies = new LinkedList<>();
 
-    @Autowired
+/*    @Autowired
     private MovieCreator movieCreator;
 
-    public Movie addMovie() {
-        Movie movie = movieCreator.createMovie();
+    public Movie addMovie(String id, String title, String rating, String plot, String poster) {
+        Movie movie = movieCreator.createMovie(id, title, rating, plot, poster );
         this.movies.add(movie);
         return movie;
-    }
+    }*/
 
     public void addTopTenMovies(Movie movie){
         movies.add(movie);

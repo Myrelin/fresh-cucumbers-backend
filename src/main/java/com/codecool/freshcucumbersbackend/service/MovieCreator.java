@@ -12,11 +12,13 @@ import org.springframework.stereotype.Component;
 
 public class MovieCreator {
 
-    public Movie createMovie() {
+/*    public Movie createMovie(String id, String title, String rating, String plot, String poster) {
         Movie movie = new Movie();
-        movie.setId("1");
-        movie.setRating("8.9");
-        movie.setTitle("Unfresh Cucumbers");
+        movie.setId(id);
+        movie.setRating(rating);
+        movie.setTitle(title);
+        movie.setPlot(plot);
+        movie.setPoster(poster);
         return movie;
-    }
+    }*/
 }
