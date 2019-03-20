@@ -26,4 +26,9 @@ public class Movie implements Serializable {
 
     @JsonProperty("Plot")
     private String plot;
+
+    @JsonProperty("Poster")
+    private String poster;
+
+
 }
