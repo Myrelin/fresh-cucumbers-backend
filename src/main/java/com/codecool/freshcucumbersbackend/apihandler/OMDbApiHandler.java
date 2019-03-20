@@ -2,9 +2,10 @@ package com.codecool.freshcucumbersbackend.apihandler;
 
 import com.codecool.freshcucumbersbackend.model.Movie;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.client.RestTemplate;
 
-
+@CrossOrigin
 @Component
 public class OMDbApiHandler {
 
