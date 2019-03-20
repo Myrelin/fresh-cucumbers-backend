@@ -15,13 +15,13 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Component
 public class Movie implements Serializable {
-    @JsonProperty("Id")
+    @JsonProperty("imdbID")
     private String id;
 
     @JsonProperty("Title")
     private String title;
 
-    @JsonProperty("Rating")
+    @JsonProperty("imdbRating")
     private String rating;
 
     @JsonProperty("Plot")
