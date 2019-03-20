@@ -1,5 +1,6 @@
 package com.codecool.freshcucumbersbackend.controller;
 
+import com.codecool.freshcucumbersbackend.apihandler.OMDbApiHandler;
 import com.codecool.freshcucumbersbackend.model.Movie;
 import com.codecool.freshcucumbersbackend.service.MovieStorage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,8 @@ import java.util.List;
 public class MovieController {
 
 
-
+    @Autowired
+    OMDbApiHandler omDbApiHandler;
 
     @Autowired
     private MovieStorage movieStorage;
@@ -25,6 +27,11 @@ public class MovieController {
     @GetMapping("/add")
     public Movie createMovie() {
         return movieStorage.addMovie();
+    }
+
+    @GetMapping("/search")
+    public Movie searchForMovie(){
+        return omDbApiHandler.getSearchedMovieByTitle("iron");
     }
 
 }
