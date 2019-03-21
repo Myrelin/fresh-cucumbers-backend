@@ -3,24 +3,29 @@ package com.codecool.freshcucumbersbackend;
 import com.codecool.freshcucumbersbackend.controller.MovieController;
 import com.codecool.freshcucumbersbackend.model.Movie;
 import com.codecool.freshcucumbersbackend.service.MovieCreator;
+import com.codecool.freshcucumbersbackend.service.MovieStorage;
+import com.codecool.freshcucumbersbackend.service.TopTenMovieLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
 
 @SpringBootApplication
 public class FreshCucumbersBackendApplication {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(SpringBootApplication.class);
-
     @Autowired
-    private MovieCreator movieCreator;
+    private MovieStorage movieStorage;
 
     @Autowired
     private MovieController movieController;
+
+    @Autowired
+    private TopTenMovieLoader topTenMovieLoader = new TopTenMovieLoader(movieStorage, movieController);
 
     public static void main(String[] args) {
         SpringApplication.run(FreshCucumbersBackendApplication.class, args);
@@ -28,9 +33,7 @@ public class FreshCucumbersBackendApplication {
 
     @PostConstruct
     public void afterInit() {
-        movieController.populate();
-
-
+        topTenMovieLoader.populate();
 
     }
 
