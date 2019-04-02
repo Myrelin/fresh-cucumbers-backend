@@ -1,12 +1,11 @@
 package com.codecool.freshcucumbersbackend.controller;
 
-import com.codecool.freshcucumbersbackend.apihandler.OMDbApiHandler;
+import com.codecool.freshcucumbersbackend.dao.OMDbApiHandler;
 import com.codecool.freshcucumbersbackend.model.Movie;
 import com.codecool.freshcucumbersbackend.service.MovieStorage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -20,9 +19,6 @@ public class MovieController {
     OMDbApiHandler omDbApiHandler;
 
     @Autowired
-    RestTemplate restTemplate;
-
-    @Autowired
     private MovieStorage movieStorage;
 
     @CrossOrigin(origins = "http://localhost:3000")
@@ -34,7 +30,7 @@ public class MovieController {
     @RequestMapping(value = "/search")
     public Movie searchApiByTitle(@RequestParam("title")String name){
 
-        return omDbApiHandler.getSearchedMovieByTitle(name, restTemplate);
+        return omDbApiHandler.getSearchedMovieByTitle(name);
     }
 }
 

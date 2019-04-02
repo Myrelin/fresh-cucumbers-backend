@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -30,4 +31,7 @@ public class Movie implements Serializable {
 
     @JsonProperty("Poster")
     private String poster;
+
+    @JsonProperty("results")
+    private List<ReviewResult> review;
 }
