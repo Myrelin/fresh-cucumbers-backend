@@ -1,4 +1,6 @@
 package com.codecool.freshcucumbersbackend.config;
+import com.codecool.freshcucumbersbackend.dao.TMDbApiHandler;
+import com.codecool.freshcucumbersbackend.model.TMDbReview;
 import com.codecool.freshcucumbersbackend.service.MovieCreator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +15,13 @@ public class CreatorConfig {
     }
 
     @Bean
+    public TMDbApiHandler tmDbApiHandler() {
+        return new TMDbApiHandler();
+    }
+
+    @Bean
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
+
 }
