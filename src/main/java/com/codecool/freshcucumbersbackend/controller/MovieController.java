@@ -8,6 +8,7 @@ import com.codecool.freshcucumbersbackend.service.MovieStorage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.LinkedList;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -31,9 +32,10 @@ public class MovieController {
     }
 
     @RequestMapping(value = "/search")
-    public Movie searchApiByTitle(@RequestParam("title")String name){
-
-        return omDbApiHandler.getSearchedMovieByTitle(name);
+    public List<Movie> searchApiByTitle(@RequestParam("title")String name){
+        List<Movie> movies = new LinkedList<>();
+        movies.add(omDbApiHandler.getSearchedMovieByTitle(name));
+        return movies;
     }
 }
 
