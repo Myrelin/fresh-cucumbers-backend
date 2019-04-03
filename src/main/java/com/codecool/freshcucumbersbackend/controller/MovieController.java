@@ -26,7 +26,7 @@ public class MovieController {
     @GetMapping("/index")
     public List<Movie> movies() {
 //        return movieStorage.getMovies();
-        List<Movie> movies = movieRepository.
+        List<Movie> movies = movieRepository.findAll();
         return movies;
     }
 
