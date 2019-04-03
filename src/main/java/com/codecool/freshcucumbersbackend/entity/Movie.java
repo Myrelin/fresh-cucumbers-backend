@@ -35,7 +35,7 @@ public class Movie implements Serializable {
     @JsonProperty("Poster")
     private String poster;
 
-//    @Singular
+    @Singular
     @OneToMany(mappedBy = "movie", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @EqualsAndHashCode.Exclude
     @JsonProperty("results")
