@@ -1,6 +1,8 @@
 package com.codecool.freshcucumbersbackend.model;
 
 import java.util.List;
+
+import com.codecool.freshcucumbersbackend.entity.ReviewResult;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;

@@ -1,7 +1,7 @@
 package com.codecool.freshcucumbersbackend.controller;
 
 import com.codecool.freshcucumbersbackend.dao.OMDbApiHandler;
-import com.codecool.freshcucumbersbackend.model.Movie;
+import com.codecool.freshcucumbersbackend.entity.Movie;
 import com.codecool.freshcucumbersbackend.service.MovieStorage;
 
 import org.springframework.beans.factory.annotation.Autowired;

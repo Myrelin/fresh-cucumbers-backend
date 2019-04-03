@@ -1,7 +1,7 @@
 package com.codecool.freshcucumbersbackend.service;
 
 import com.codecool.freshcucumbersbackend.dao.OMDbApiHandler;
-import com.codecool.freshcucumbersbackend.model.Movie;
+import com.codecool.freshcucumbersbackend.entity.Movie;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;

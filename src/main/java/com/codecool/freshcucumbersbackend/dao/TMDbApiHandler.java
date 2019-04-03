@@ -1,6 +1,6 @@
 package com.codecool.freshcucumbersbackend.dao;
 
-import com.codecool.freshcucumbersbackend.model.ReviewResult;
+import com.codecool.freshcucumbersbackend.entity.ReviewResult;
 import com.codecool.freshcucumbersbackend.model.TMDbMovieTest;
 import com.codecool.freshcucumbersbackend.model.TMDbReview;
 import lombok.Data;
