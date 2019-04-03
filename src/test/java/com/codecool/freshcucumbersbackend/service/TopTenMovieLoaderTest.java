@@ -16,7 +16,7 @@ import static org.mockito.Mockito.*;
 class TopTenMovieLoaderTest {
 
 
-    @Test
+/*    @Test
     void whenPopulateIsCalled_MoviesAreAddedToMovieStorage_V2() {
         OMDbApiHandler omDbApiHandler = Mockito.mock(OMDbApiHandler.class);
         MovieStorage movieStorage = new MovieStorage();
@@ -42,7 +42,7 @@ class TopTenMovieLoaderTest {
 
         assertEquals(TopTenMovieLoader.TOP_10_MOVIE.size(), movieStorage.getMovies().size());
     }
-}
+}*/
 
 
     // whenDoingX_YShouldHappen
@@ -64,3 +64,5 @@ class TopTenMovieLoaderTest {
 //        assertTrue(movieStorage.getMovies().contains(movieIronMan));
 //    }
 //}
+
+}

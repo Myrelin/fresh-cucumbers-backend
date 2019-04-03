@@ -42,16 +42,20 @@ public class OMDbApiHandler {
         Movie movie = restTemplate
                 .getForObject(url, Movie.class);
         String imdbID = movie.getId();
-//        System.out.println(imdbID);
+
         String tmdbID = String.valueOf(tmDbApiHandler.getInternalMovieID(imdbID));
-//        System.out.println(tmdbID);
+
         List<ReviewResult> reviews = tmDbApiHandler.getMovieReviewByTMDbID(tmdbID);
-//        System.out.println(reviews);
+
         Set<ReviewResult> reviewResults = new HashSet<>(reviews);
-//        System.out.println(reviewResults);
+
+        for (ReviewResult review:reviewResults) {
+            review.setMovie(movie);
+        }
+
         movie.setReviews(reviewResults);
         movieRepository.save(movie);
-        System.out.println(movie);
+//        System.out.println(movie);
         return movie;
     }
 
