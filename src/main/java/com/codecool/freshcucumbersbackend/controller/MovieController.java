@@ -1,7 +1,8 @@
 package com.codecool.freshcucumbersbackend.controller;
 
 import com.codecool.freshcucumbersbackend.dao.OMDbApiHandler;
-import com.codecool.freshcucumbersbackend.model.Movie;
+import com.codecool.freshcucumbersbackend.entity.Movie;
+import com.codecool.freshcucumbersbackend.repository.MovieRepository;
 import com.codecool.freshcucumbersbackend.service.MovieStorage;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +20,14 @@ public class MovieController {
     OMDbApiHandler omDbApiHandler;
 
     @Autowired
-    private MovieStorage movieStorage;
+    MovieRepository movieRepository;
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/index")
     public List<Movie> movies() {
-        return movieStorage.getMovies();
+//        return movieStorage.getMovies();
+        List<Movie> movies = movieRepository.findAll();
+        return movies;
     }
 
     @RequestMapping(value = "/search")

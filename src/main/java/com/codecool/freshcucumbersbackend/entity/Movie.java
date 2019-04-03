@@ -1,21 +1,24 @@
-package com.codecool.freshcucumbersbackend.model;
+package com.codecool.freshcucumbersbackend.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
 @Component
+@Entity
 public class Movie implements Serializable {
+
+    @Id
+    @GeneratedValue
+    private Long dbID;
 
     @JsonProperty("imdbID")
     private String id;
@@ -32,6 +35,9 @@ public class Movie implements Serializable {
     @JsonProperty("Poster")
     private String poster;
 
+//    @Singular
+    @OneToMany(mappedBy = "movie", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @EqualsAndHashCode.Exclude
     @JsonProperty("results")
-    private List<ReviewResult> review;
+    private Set<ReviewResult> reviews;
 }

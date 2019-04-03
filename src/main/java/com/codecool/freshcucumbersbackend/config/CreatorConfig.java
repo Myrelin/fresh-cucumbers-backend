@@ -1,5 +1,6 @@
 package com.codecool.freshcucumbersbackend.config;
 import com.codecool.freshcucumbersbackend.dao.TMDbApiHandler;
+import com.codecool.freshcucumbersbackend.entity.ReviewResult;
 import com.codecool.freshcucumbersbackend.model.TMDbReview;
 import com.codecool.freshcucumbersbackend.service.MovieCreator;
 import org.springframework.context.annotation.Bean;
@@ -24,4 +25,8 @@ public class CreatorConfig {
         return new RestTemplate();
     }
 
+    @Bean
+    public ReviewResult reviewResult() {
+        return new ReviewResult();
+    }
 }

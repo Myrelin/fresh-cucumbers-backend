@@ -1,12 +1,13 @@
-package com.codecool.freshcucumbersbackend.model;
+package com.codecool.freshcucumbersbackend.entity;
 
+import com.codecool.freshcucumbersbackend.entity.Movie;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import javax.persistence.*;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -15,16 +16,27 @@ import lombok.NoArgsConstructor;
 //        "id"
 })
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Entity
 public class ReviewResult {
+
+    @Id
+    @GeneratedValue
+    private Long dbID;
 
     @JsonProperty("author")
     public String author;
+
     @JsonProperty("content")
+    @Lob
+    @Column
     public String content;
-//    @JsonProperty("id")
-//    public String id;
+
+    @JsonIgnore
+    @ManyToOne
+    private Movie movie;
 }
