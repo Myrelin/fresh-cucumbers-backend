@@ -31,9 +31,9 @@ public class ReviewResult {
     @JsonProperty("author")
     public String author;
 
+
     @JsonProperty("content")
-    @Lob
-    @Column
+    @Column(columnDefinition = "text")
     public String content;
 
     @JsonIgnore
