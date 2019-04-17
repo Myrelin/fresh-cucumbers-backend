@@ -2,7 +2,7 @@ package com.codecool.freshcucumbersbackend.model;
 
 import java.util.List;
 
-import com.codecool.freshcucumbersbackend.entity.ReviewResult;
+import com.codecool.freshcucumbersbackend.entity.Review;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -26,6 +26,6 @@ public class TMDbReview {
     @JsonProperty("id")
     public Integer id;*/
     @JsonProperty("results")
-    public List<ReviewResult> reviewResults = null;
+    public List<Review> reviews = null;
 
 }

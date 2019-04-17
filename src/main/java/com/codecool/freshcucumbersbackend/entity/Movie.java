@@ -39,5 +39,11 @@ public class Movie implements Serializable {
     @OneToMany(mappedBy = "movie", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @EqualsAndHashCode.Exclude
     @JsonProperty("results")
-    private Set<ReviewResult> reviews;
+    private Set<Review> reviews;
+
+    public void addReviewToMovie(Review review) {
+        this.getReviews().add(review);
+
+
+    }
 }

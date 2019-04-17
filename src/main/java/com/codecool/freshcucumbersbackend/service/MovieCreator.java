@@ -1,7 +1,7 @@
 package com.codecool.freshcucumbersbackend.service;
 
 import com.codecool.freshcucumbersbackend.entity.Movie;
-import com.codecool.freshcucumbersbackend.entity.ReviewResult;
+import com.codecool.freshcucumbersbackend.entity.Review;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,7 +15,7 @@ import java.util.Set;
 @Builder
 public class MovieCreator {
 
-    public Movie createMovie(String id, String title, String rating, String plot, String poster, Set<ReviewResult> review) {
+    public Movie createMovie(String id, String title, String rating, String plot, String poster, Set<Review> review) {
         Movie movie = new Movie();
         movie.setId(id);
         movie.setRating(rating);

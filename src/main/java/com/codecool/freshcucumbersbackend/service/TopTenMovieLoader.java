@@ -2,7 +2,6 @@ package com.codecool.freshcucumbersbackend.service;
 
 import com.codecool.freshcucumbersbackend.dao.OMDbApiHandler;
 import com.codecool.freshcucumbersbackend.entity.Movie;
-import com.codecool.freshcucumbersbackend.entity.ReviewResult;
 import com.codecool.freshcucumbersbackend.repository.MovieRepository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
