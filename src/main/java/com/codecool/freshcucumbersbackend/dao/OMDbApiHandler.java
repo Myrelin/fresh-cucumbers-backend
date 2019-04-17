@@ -4,6 +4,7 @@ import com.codecool.freshcucumbersbackend.entity.Movie;
 import com.codecool.freshcucumbersbackend.entity.Review;
 import com.codecool.freshcucumbersbackend.repository.MovieRepository;
 import com.codecool.freshcucumbersbackend.repository.ReviewRepository;
+import com.codecool.freshcucumbersbackend.service.MovieStorage;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -31,33 +32,40 @@ public class OMDbApiHandler {
     @Autowired
     TMDbApiHandler tmDbApiHandler;
 
+    @Autowired
+    MovieStorage movieStorage;
+
     private static final String key = "e3e4583e";
     private static final String apiUrl = "http://www.omdbapi.com/";
 
-    //DAO level
-    public Movie getSearchedMovieByTitle(String search){
+    public Movie getSearchedMovieByTitle(String search) {
+
 
         String url = apiUrl + "?t=" + search + "&apikey=" + key;
 
-        Movie movie = restTemplate
+        Movie searchedMovie = restTemplate
                 .getForObject(url, Movie.class);
-        String imdbID = movie.getId();
+        String imdbID = searchedMovie.getId();
 
-        String tmdbID = String.valueOf(tmDbApiHandler.getInternalMovieID(imdbID));
+        if (movieStorage.checkIfMovieSearchInDb(imdbID)) {
+            System.out.println("Movie returned from DB!");
+            return movieStorage.retrieveMovieFromDbByTitle(imdbID);
+        } else {
 
-        List<Review> reviews = tmDbApiHandler.getMovieReviewByTMDbID(tmdbID);
+            String tmdbID = String.valueOf(tmDbApiHandler.getInternalMovieID(imdbID));
 
-        Set<Review> reviewResults = new HashSet<>(reviews);
+            List<Review> reviews = tmDbApiHandler.getMovieReviewByTMDbID(tmdbID);
 
-        for (Review review:reviewResults) {
-            review.setMovie(movie);
+            Set<Review> reviewResults = new HashSet<>(reviews);
+
+            for (Review review : reviewResults) {
+                review.setMovie(searchedMovie);
+            }
+
+            searchedMovie.setReviews(reviewResults);
+            movieRepository.save(searchedMovie);
+            System.out.println("Returning movie from api!");
+            return searchedMovie;
         }
-
-        movie.setReviews(reviewResults);
-        movieRepository.save(movie);
-//        System.out.println(movie);
-        return movie;
     }
-
-
 }
