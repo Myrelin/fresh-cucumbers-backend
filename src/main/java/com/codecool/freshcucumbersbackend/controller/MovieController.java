@@ -1,5 +1,6 @@
 package com.codecool.freshcucumbersbackend.controller;
 
+import com.codecool.freshcucumbersbackend.repository.MovieStorage;
 import com.codecool.freshcucumbersbackend.service.OMDbApiHandler;
 import com.codecool.freshcucumbersbackend.entity.Movie;
 import com.codecool.freshcucumbersbackend.repository.MovieRepository;
@@ -31,12 +32,21 @@ public class MovieController {
     @Autowired
     ReviewHandler reviewHandler;
 
+    @Autowired
+    MovieStorage movieStorage;
+
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/index")
     public List<Movie> movies() {
-//        return movieStorage.getMovies();
-        List<Movie> movies = movieRepository.findAll();
-        return movies;
+/*        List<Movie> movies = movieRepository.findAll();
+        List<Movie> top10Movies = new LinkedList<>();
+        for (int i = 0; i < 10; i++) {
+            top10Movies.add(movies.get(i));
+        }
+        System.out.println(movies.size());
+        System.out.println(top10Movies.size());
+        return top10Movies;*/
+        return movieStorage.retrieveFirstTenMovies();
     }
 
     @RequestMapping(value = "/search")
@@ -48,18 +58,14 @@ public class MovieController {
 
     @GetMapping(value = "/movieDetails={id}")
     public Optional<Movie> getMovieDetails(@PathVariable("id") Long id) {
-        Optional<Movie> movie = movieRepository.findById(id);
-        return movie;
+        return movieRepository.findById(id);
     }
 
     @RequestMapping(value = "/addreviewtomovie")
     public void addNewReviewToMovie(@RequestParam("id") Long id,
                                     @RequestParam("author") String author,
                                     @RequestParam("newreview") String review) {
-
         reviewHandler.createNewReview(id, author, review);
-
-
     }
 }
 
