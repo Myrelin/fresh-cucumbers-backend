@@ -1,4 +1,4 @@
-package com.codecool.freshcucumbersbackend.service;
+package com.codecool.freshcucumbersbackend.repository;
 
 import com.codecool.freshcucumbersbackend.entity.Movie;
 import com.codecool.freshcucumbersbackend.entity.Review;

@@ -1,11 +1,11 @@
 package com.codecool.freshcucumbersbackend.controller;
 
-import com.codecool.freshcucumbersbackend.dao.OMDbApiHandler;
+import com.codecool.freshcucumbersbackend.service.OMDbApiHandler;
 import com.codecool.freshcucumbersbackend.entity.Movie;
-import com.codecool.freshcucumbersbackend.entity.Review;
 import com.codecool.freshcucumbersbackend.repository.MovieRepository;
 
 import com.codecool.freshcucumbersbackend.repository.ReviewRepository;
+import com.codecool.freshcucumbersbackend.repository.ReviewStorage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +27,9 @@ public class MovieController {
 
     @Autowired
     ReviewRepository reviewRepository;
+
+    @Autowired
+    ReviewStorage reviewStorage;
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/index")
@@ -53,19 +56,11 @@ public class MovieController {
     public void addNewReviewToMovie(@RequestParam("id") Long id,
                                     @RequestParam("author") String author,
                                     @RequestParam("newreview") String review) {
-        Movie movie = movieRepository.getOne(id);
-        System.out.println(movie);
-        Review newReview = new Review();
-        newReview.setMovie(movie);
-        newReview.setAuthor(author);
-        newReview.setContent(review);
-        movie.addReviewToMovie(newReview);
-        reviewRepository.save(newReview);
-        movieRepository.save(movie);
+        if (!reviewStorage.checkIfReviewInDb(author, id)) {
 
-
-
-
+            reviewStorage.createNewReview(id, author, review);
+            System.out.println("Review added to db!");
+        }
     }
 }
 

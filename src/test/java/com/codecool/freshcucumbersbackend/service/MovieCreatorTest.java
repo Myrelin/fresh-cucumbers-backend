@@ -2,6 +2,7 @@ package com.codecool.freshcucumbersbackend.service;
 
 import com.codecool.freshcucumbersbackend.entity.Movie;
 import com.codecool.freshcucumbersbackend.entity.Review;
+import com.codecool.freshcucumbersbackend.repository.MovieCreator;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 

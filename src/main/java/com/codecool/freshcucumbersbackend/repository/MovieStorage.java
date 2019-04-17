@@ -1,7 +1,6 @@
-package com.codecool.freshcucumbersbackend.service;
+package com.codecool.freshcucumbersbackend.repository;
 
 import com.codecool.freshcucumbersbackend.entity.Movie;
-import com.codecool.freshcucumbersbackend.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

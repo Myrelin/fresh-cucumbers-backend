@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class TMDbMovieTest {
+public class TMDbMovie {
 
     @JsonProperty("movie_results")
     private List<MovieResult> movieResults = null;
