@@ -1,7 +1,7 @@
-package com.codecool.freshcucumbersbackend.dao;
+package com.codecool.freshcucumbersbackend.service;
 
 import com.codecool.freshcucumbersbackend.entity.Review;
-import com.codecool.freshcucumbersbackend.model.TMDbMovieTest;
+import com.codecool.freshcucumbersbackend.model.TMDbMovie;
 import com.codecool.freshcucumbersbackend.model.TMDbReview;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +25,8 @@ public class TMDbApiHandler {
 
     public int getInternalMovieID(String imdbID) {
         String url = apiUrl + "find/" + imdbID + "?api_key=" + key + "&language=en-US&external_source=imdb_id";
-        TMDbMovieTest tmDbMovieTest = restTemplate.getForObject(url, TMDbMovieTest.class);
-        return tmDbMovieTest.getMovieResults().get(0).getId();
+        TMDbMovie tmDbMovie = restTemplate.getForObject(url, TMDbMovie.class);
+        return tmDbMovie.getMovieResults().get(0).getId();
     }
 
     public List<Review> getMovieReviewByTMDbID(String tmdbID) {

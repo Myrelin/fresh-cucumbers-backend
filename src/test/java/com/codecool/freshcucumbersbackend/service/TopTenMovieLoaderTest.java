@@ -1,18 +1,5 @@
 package com.codecool.freshcucumbersbackend.service;
 
-import com.codecool.freshcucumbersbackend.dao.OMDbApiHandler;
-import com.codecool.freshcucumbersbackend.entity.Movie;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-import org.mockito.stubbing.Answer;
-
-import java.util.LinkedList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.*;
-
 class TopTenMovieLoaderTest {
 
 

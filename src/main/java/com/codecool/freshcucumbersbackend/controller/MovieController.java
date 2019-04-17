@@ -1,11 +1,11 @@
 package com.codecool.freshcucumbersbackend.controller;
 
-import com.codecool.freshcucumbersbackend.dao.OMDbApiHandler;
+import com.codecool.freshcucumbersbackend.service.OMDbApiHandler;
 import com.codecool.freshcucumbersbackend.entity.Movie;
 import com.codecool.freshcucumbersbackend.repository.MovieRepository;
 
 import com.codecool.freshcucumbersbackend.repository.ReviewRepository;
-import com.codecool.freshcucumbersbackend.dao.ReviewHandler;
+import com.codecool.freshcucumbersbackend.repository.ReviewHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -58,16 +58,6 @@ public class MovieController {
                                     @RequestParam("newreview") String review) {
 
         reviewHandler.createNewReview(id, author, review);
-
-/*        Movie movie = movieRepository.getOne(id);
-        System.out.println(movie);
-        Review newReview = new Review();
-        newReview.setMovie(movie);
-        newReview.setAuthor(author);
-        newReview.setContent(review);
-        movie.addReviewToMovie(newReview);
-        reviewRepository.save(newReview);
-        movieRepository.save(movie);*/
 
 
     }

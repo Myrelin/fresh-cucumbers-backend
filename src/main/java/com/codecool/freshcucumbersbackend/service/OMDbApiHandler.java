@@ -1,10 +1,10 @@
-package com.codecool.freshcucumbersbackend.dao;
+package com.codecool.freshcucumbersbackend.service;
 
 import com.codecool.freshcucumbersbackend.entity.Movie;
 import com.codecool.freshcucumbersbackend.entity.Review;
 import com.codecool.freshcucumbersbackend.repository.MovieRepository;
 import com.codecool.freshcucumbersbackend.repository.ReviewRepository;
-import com.codecool.freshcucumbersbackend.service.MovieStorage;
+import com.codecool.freshcucumbersbackend.repository.MovieStorage;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

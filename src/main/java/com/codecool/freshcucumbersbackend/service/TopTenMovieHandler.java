@@ -1,8 +1,8 @@
 package com.codecool.freshcucumbersbackend.service;
 
-import com.codecool.freshcucumbersbackend.dao.OMDbApiHandler;
 import com.codecool.freshcucumbersbackend.entity.Movie;
 import com.codecool.freshcucumbersbackend.repository.MovieRepository;
+import com.codecool.freshcucumbersbackend.repository.MovieStorage;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @Service
-public class TopTenMovieLoader {
+public class TopTenMovieHandler {
     @Autowired
     MovieStorage movieStorage;
 
@@ -31,12 +31,12 @@ public class TopTenMovieLoader {
     public void populate() {
 
         for (int i = 0; i < TOP_10_MOVIE.size(); i++) {
-            Movie movie = omDbApiHandler.getSearchedMovieByTitle(TOP_10_MOVIE.get(i));
+            omDbApiHandler.getSearchedMovieByTitle(TOP_10_MOVIE.get(i));
 //            movieRepository.save(movie);
             System.out.println("saving to db");
-//            movieStorage.addTopTenMovies(movie);movieStorage.addTopTenMovies(movie);
+
         }
-        System.out.println("sss");
+
 
     }
 }
