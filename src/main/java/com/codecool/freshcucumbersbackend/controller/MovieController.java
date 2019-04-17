@@ -5,7 +5,7 @@ import com.codecool.freshcucumbersbackend.entity.Movie;
 import com.codecool.freshcucumbersbackend.repository.MovieRepository;
 
 import com.codecool.freshcucumbersbackend.repository.ReviewRepository;
-import com.codecool.freshcucumbersbackend.repository.ReviewHandler;
+import com.codecool.freshcucumbersbackend.repository.ReviewStorage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +29,7 @@ public class MovieController {
     ReviewRepository reviewRepository;
 
     @Autowired
-    ReviewHandler reviewHandler;
+    ReviewStorage reviewStorage;
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/index")
@@ -56,10 +56,11 @@ public class MovieController {
     public void addNewReviewToMovie(@RequestParam("id") Long id,
                                     @RequestParam("author") String author,
                                     @RequestParam("newreview") String review) {
+        if (!reviewStorage.checkIfReviewInDb(author, id)) {
 
-        reviewHandler.createNewReview(id, author, review);
-
-
+            reviewStorage.createNewReview(id, author, review);
+            System.out.println("Review added to db!");
+        }
     }
 }
 
