@@ -22,7 +22,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Builder
 @Entity
-public class ReviewResult {
+public class Review {
 
     @Id
     @GeneratedValue

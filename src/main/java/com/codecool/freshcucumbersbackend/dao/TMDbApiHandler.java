@@ -1,6 +1,6 @@
 package com.codecool.freshcucumbersbackend.dao;
 
-import com.codecool.freshcucumbersbackend.entity.ReviewResult;
+import com.codecool.freshcucumbersbackend.entity.Review;
 import com.codecool.freshcucumbersbackend.model.TMDbMovieTest;
 import com.codecool.freshcucumbersbackend.model.TMDbReview;
 import lombok.Data;
@@ -29,9 +29,9 @@ public class TMDbApiHandler {
         return tmDbMovieTest.getMovieResults().get(0).getId();
     }
 
-    public List<ReviewResult> getMovieReviewByTMDbID(String tmdbID) {
+    public List<Review> getMovieReviewByTMDbID(String tmdbID) {
         String url = apiUrl + "movie/" + tmdbID + "/reviews?api_key=" + key + "&language=en-US&page=1";
         TMDbReview review = restTemplate.getForObject(url, TMDbReview.class);
-        return review.getReviewResults();
+        return review.getReviews();
     }
 }

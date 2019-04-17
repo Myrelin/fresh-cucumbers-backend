@@ -1,9 +1,9 @@
 package com.codecool.freshcucumbersbackend.dao;
 
 import com.codecool.freshcucumbersbackend.entity.Movie;
-import com.codecool.freshcucumbersbackend.entity.ReviewResult;
+import com.codecool.freshcucumbersbackend.entity.Review;
 import com.codecool.freshcucumbersbackend.repository.MovieRepository;
-import com.codecool.freshcucumbersbackend.repository.ReviewResultRepository;
+import com.codecool.freshcucumbersbackend.repository.ReviewRepository;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -23,7 +23,7 @@ public class OMDbApiHandler {
     MovieRepository movieRepository;
 
     @Autowired
-    ReviewResultRepository reviewResultRepository;
+    ReviewRepository reviewRepository;
 
     @Autowired
     RestTemplate restTemplate;
@@ -45,11 +45,11 @@ public class OMDbApiHandler {
 
         String tmdbID = String.valueOf(tmDbApiHandler.getInternalMovieID(imdbID));
 
-        List<ReviewResult> reviews = tmDbApiHandler.getMovieReviewByTMDbID(tmdbID);
+        List<Review> reviews = tmDbApiHandler.getMovieReviewByTMDbID(tmdbID);
 
-        Set<ReviewResult> reviewResults = new HashSet<>(reviews);
+        Set<Review> reviewResults = new HashSet<>(reviews);
 
-        for (ReviewResult review:reviewResults) {
+        for (Review review:reviewResults) {
             review.setMovie(movie);
         }
 

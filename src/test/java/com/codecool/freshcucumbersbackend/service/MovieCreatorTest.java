@@ -1,7 +1,7 @@
 package com.codecool.freshcucumbersbackend.service;
 
 import com.codecool.freshcucumbersbackend.entity.Movie;
-import com.codecool.freshcucumbersbackend.entity.ReviewResult;
+import com.codecool.freshcucumbersbackend.entity.Review;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -21,7 +21,7 @@ class MovieCreatorTest {
         String rating = "10";
         String plot = "This is a plot";
         String poster = "www.reddit.com";
-        Set<ReviewResult> review = new HashSet<>();
+        Set<Review> review = new HashSet<>();
         MovieCreator movieCreator = Mockito.mock(MovieCreator.class);
         Movie movie = new Movie(dbId, id, title, rating, plot, poster, review);
 
