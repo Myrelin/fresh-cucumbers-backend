@@ -38,5 +38,9 @@ public class Review {
 
     @JsonIgnore
     @ManyToOne
+    private User user;
+
+    @JsonIgnore
+    @ManyToOne
     private Movie movie;
 }

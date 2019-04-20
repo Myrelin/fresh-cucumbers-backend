@@ -38,14 +38,6 @@ public class MovieController {
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/index")
     public List<Movie> movies() {
-/*        List<Movie> movies = movieRepository.findAll();
-        List<Movie> top10Movies = new LinkedList<>();
-        for (int i = 0; i < 10; i++) {
-            top10Movies.add(movies.get(i));
-        }
-        System.out.println(movies.size());
-        System.out.println(top10Movies.size());
-        return top10Movies;*/
         return movieStorage.retrieveFirstTenMovies();
     }
 
@@ -54,6 +46,9 @@ public class MovieController {
         List<Movie> movies = new LinkedList<>();
         movies.add(omDbApiHandler.getSearchedMovieByTitle(name));
         return movies;
+
+        //string search null on repeated search button clicks!
+        //403 bad request
     }
 
     @GetMapping(value = "/movieDetails={id}")
@@ -61,17 +56,29 @@ public class MovieController {
         return movieRepository.findById(id);
     }
 
+    /*
+        Add new reviews to a selected movie. Return depends on save outcome.
+        Possible values:
+            Review already in DB: "Review already in the DB."
+            Could not save the review itself: "Could not save the review."
+            Could not update the movie object: "Could not update the movie."
+            Success: "Review saved."
+        @params: id, author, newreview
+        @returns: String
+     */
     @RequestMapping(value = "/addreviewtomovie")
-    public void addNewReviewToMovie(@RequestParam("id") Long id,
+    public String addNewReviewToMovie(@RequestParam("id") Long id,
                                     @RequestParam("author") String author,
                                     @RequestParam("newreview") String review) {
 
         if (!reviewStorage.checkIfReviewInDb(author, id)) {
-
-            reviewStorage.createNewReview(id, author, review);
-            System.out.println("Review added to db!");
+            String result = reviewStorage.createNewReview(id, author, review);
+            System.out.println(result);
+            return result;
         }
-
+        String message = "Review already in the DB.";
+        System.out.println(message);
+        return message;
     }
 }
 
