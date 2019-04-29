@@ -36,9 +36,6 @@ public class Review {
     @Column(columnDefinition = "text")
     public String content;
 
-    @JsonIgnore
-    @ManyToOne
-    private User user;
 
     @JsonIgnore
     @ManyToOne
