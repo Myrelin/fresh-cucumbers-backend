@@ -56,7 +56,7 @@ public class MovieController {
         return movieRepository.findById(id);
     }
 
-    /*
+    /**
         Add new reviews to a selected movie. Return depends on save outcome.
         Possible values:
             Review already in DB: "Review already in the DB."
