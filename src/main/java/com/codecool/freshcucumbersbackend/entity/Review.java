@@ -42,4 +42,5 @@ public class Review {
     @JsonIgnore
     @ManyToOne
     private Movie movie;
+
 }

@@ -8,6 +8,7 @@ import com.codecool.freshcucumbersbackend.repository.MovieRepository;
 import com.codecool.freshcucumbersbackend.repository.ReviewRepository;
 import com.codecool.freshcucumbersbackend.repository.ReviewStorage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.LinkedList;
@@ -18,6 +19,9 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/movie")
 public class MovieController {
+
+
+
 
 
     @Autowired
