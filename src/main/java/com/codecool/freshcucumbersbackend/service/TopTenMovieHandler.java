@@ -25,7 +25,7 @@ public class TopTenMovieHandler {
     @Autowired
     MovieRepository movieRepository;
 
-    static final List<String> TOP_10_MOVIE = new LinkedList<>(Arrays.asList("The shawshank redemption", "The Godfather", "The Godfather: part II", "The Dark Knight", "12 angry men",
+    static final List<String> TOP_10_MOVIE = new LinkedList<>(Arrays.asList("Avengers: Endgame", "The Godfather", "The Godfather: part II", "The Dark Knight", "12 angry men",
             "Iron man", "Schindler's List", "The lord of the rings: The Return Of the king", "Pulp Fiction", "Fight Club"));
 
     public void populate() {

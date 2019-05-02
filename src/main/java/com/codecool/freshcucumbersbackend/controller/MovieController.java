@@ -51,8 +51,8 @@ public class MovieController {
         //403 bad request
     }
 
-    @GetMapping(value = "/movieDetails={id}")
-    public Optional<Movie> getMovieDetails(@PathVariable("id") Long id) {
+    @GetMapping(value = "/movieDetails")
+    public Optional<Movie> getMovieDetails(@RequestParam("dbID") Long id) {
         return movieRepository.findById(id);
     }
 
