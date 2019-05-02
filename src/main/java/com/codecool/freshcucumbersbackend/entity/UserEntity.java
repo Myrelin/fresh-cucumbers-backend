@@ -2,6 +2,7 @@ package com.codecool.freshcucumbersbackend.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -25,6 +26,12 @@ public class UserEntity {
 
     private @JsonIgnore
     String password;
+
+    @Singular
+    @OneToMany(mappedBy = "author", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @EqualsAndHashCode.Exclude
+    @JsonProperty("results")
+    private Set<Review> reviews;
 
     public void setPassword(String password) {
         this.password = PASSWORD_ENCODER.encode(password);

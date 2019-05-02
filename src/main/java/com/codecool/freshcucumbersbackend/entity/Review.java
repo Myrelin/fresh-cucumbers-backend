@@ -31,7 +31,8 @@ public class Review {
     private Long dbID;
 
     @JsonProperty("author")
-    public String author;
+    @ManyToOne
+    private UserEntity author;
 
 
     @JsonProperty("content")

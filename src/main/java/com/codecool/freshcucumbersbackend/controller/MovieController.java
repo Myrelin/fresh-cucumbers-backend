@@ -50,9 +50,6 @@ public class MovieController {
         List<Movie> movies = new LinkedList<>();
         movies.add(omDbApiHandler.getSearchedMovieByTitle(name));
         return movies;
-
-        //string search null on repeated search button clicks!
-        //403 bad request
     }
 
     @GetMapping(value = "/movieDetails={id}")
