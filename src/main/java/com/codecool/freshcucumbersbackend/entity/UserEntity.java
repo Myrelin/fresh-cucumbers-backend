@@ -28,7 +28,7 @@ public class UserEntity {
     String password;
 
     @Singular
-    @OneToMany(mappedBy = "author", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "userEntity", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @EqualsAndHashCode.Exclude
     @JsonProperty("results")
     private Set<Review> reviews;
