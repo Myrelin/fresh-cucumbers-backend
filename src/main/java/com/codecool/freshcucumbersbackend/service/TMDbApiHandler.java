@@ -5,11 +5,12 @@ import com.codecool.freshcucumbersbackend.model.TMDbMovie;
 import com.codecool.freshcucumbersbackend.model.TMDbReview;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
-
+@Component
 @Data
 public class TMDbApiHandler {
 

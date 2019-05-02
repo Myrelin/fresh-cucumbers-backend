@@ -10,22 +10,9 @@ import org.springframework.web.client.RestTemplate;
 public class AppConfig {
 
     @Bean
-    public MovieCreator creator() {
-        return new MovieCreator();
-    }
-
-    @Bean
-    public TMDbApiHandler tmDbApiHandler() {
-        return new TMDbApiHandler();
-    }
-
-    @Bean
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
+    
 
-    @Bean
-    public Review reviewResult() {
-        return new Review();
-    }
 }
