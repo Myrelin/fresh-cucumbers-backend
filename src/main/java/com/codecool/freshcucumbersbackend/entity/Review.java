@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.*;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
@@ -16,6 +17,7 @@ import javax.persistence.*;
 //        "id"
 })
 
+@Component
 @Getter
 @Setter
 @NoArgsConstructor
@@ -35,6 +37,7 @@ public class Review {
     @JsonProperty("content")
     @Column(columnDefinition = "text")
     public String content;
+
 
     @JsonIgnore
     @ManyToOne
