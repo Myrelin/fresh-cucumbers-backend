@@ -8,6 +8,8 @@ import com.codecool.freshcucumbersbackend.repository.MovieRepository;
 import com.codecool.freshcucumbersbackend.repository.ReviewRepository;
 import com.codecool.freshcucumbersbackend.repository.ReviewStorage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.LinkedList;
@@ -16,9 +18,9 @@ import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
+@Component
 @RequestMapping("/movie")
 public class MovieController {
-
 
     @Autowired
     OMDbApiHandler omDbApiHandler;
@@ -46,9 +48,6 @@ public class MovieController {
         List<Movie> movies = new LinkedList<>();
         movies.add(omDbApiHandler.getSearchedMovieByTitle(name));
         return movies;
-
-        //string search null on repeated search button clicks!
-        //403 bad request
     }
 
     @GetMapping(value = "/movieDetails")

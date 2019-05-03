@@ -31,7 +31,10 @@ public class Review {
     private Long dbID;
 
     @JsonProperty("author")
-    public String author;
+    private String author;
+
+    @ManyToOne
+    private UserEntity userEntity;
 
 
     @JsonProperty("content")
@@ -42,4 +45,5 @@ public class Review {
     @JsonIgnore
     @ManyToOne
     private Movie movie;
+
 }
