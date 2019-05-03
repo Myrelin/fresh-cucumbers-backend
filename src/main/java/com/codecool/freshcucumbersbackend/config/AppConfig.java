@@ -31,8 +31,8 @@ public class AppConfig extends WebSecurityConfigurerAdapter {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:8080"));
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST"));
         configuration.setAllowCredentials(true);
         configuration.addAllowedHeader("Authorization");
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
@@ -48,9 +48,9 @@ public class AppConfig extends WebSecurityConfigurerAdapter {
                 .configure(http)
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/movie/index").permitAll()
-                .antMatchers(HttpMethod.GET, "/movieDetails={id}").permitAll()
-                .antMatchers(HttpMethod.GET, "/search").permitAll()
-                .antMatchers(HttpMethod.POST, "/addreviewtomovie").authenticated();
+                .antMatchers(HttpMethod.GET, "/movieDetails").permitAll()
+                .antMatchers(HttpMethod.GET, "/movie/search").permitAll()
+                .antMatchers(HttpMethod.GET, "/movie/addreviewtomovie").authenticated();
 
     }
 
