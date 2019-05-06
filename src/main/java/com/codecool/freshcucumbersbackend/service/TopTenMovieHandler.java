@@ -13,7 +13,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Data
-@AllArgsConstructor
+
 @Service
 public class TopTenMovieHandler {
     @Autowired

@@ -34,13 +34,13 @@ public class ReviewStorage {
         try {
             reviewRepository.save(newReview);
         }
-        catch(Exception e) {
+        catch(Exception IllegalArgumentException) {
             return "Could not save the review.";
         }
         try {
             movieRepository.save(movie);
         }
-        catch(Exception e) {
+        catch(Exception IllegalArgumentException) {
             return "Could not update the movie.";
         }
         return "Review saved.";

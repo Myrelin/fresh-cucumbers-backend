@@ -15,7 +15,7 @@ public class MovieStorage {
 
     public boolean checkIfMovieSearchInDb(String imdbID) {
 
-        List<Movie> moviesInDB = movieRepository.findAll();
+        List<Movie> moviesInDB = movieRepository.findAll(); // write this in SQL
         for (Movie movie:moviesInDB) {
             if(movie.getId().equals(imdbID)) {
                 return true;
