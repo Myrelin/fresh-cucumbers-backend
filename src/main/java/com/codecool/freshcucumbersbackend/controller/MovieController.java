@@ -1,5 +1,6 @@
 package com.codecool.freshcucumbersbackend.controller;
 
+import com.codecool.freshcucumbersbackend.entity.Review;
 import com.codecool.freshcucumbersbackend.repository.MovieStorage;
 import com.codecool.freshcucumbersbackend.service.OMDbApiHandler;
 import com.codecool.freshcucumbersbackend.entity.Movie;
@@ -65,6 +66,8 @@ public class MovieController {
         @params: id, author, newreview
         @returns: String
      */
+
+    //void method is a-okay!
     @RequestMapping(value = "/addreviewtomovie")
     public String addNewReviewToMovie(@RequestParam("id") Long id,
                                     @RequestParam("author") String author,
@@ -78,6 +81,12 @@ public class MovieController {
         String message = "Review already in the DB.";
         System.out.println(message);
         return message;
+    }
+
+    @RequestMapping(value = "/testing")
+    public void testingVoidReturn() {
+        String test = "";
+        test.charAt(3);
     }
 }
 

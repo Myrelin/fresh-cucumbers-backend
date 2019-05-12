@@ -31,19 +31,22 @@ public class ReviewStorage {
         newReview.setAuthor(author);
         newReview.setContent(review);
         movie.addReviewToMovie(newReview);
-        try {
-            reviewRepository.save(newReview);
+        if(newReview.getAuthor().length() != 0 && newReview.getContent().length() != 0) {
+            try {
+                reviewRepository.save(newReview);
+            } catch (Exception IllegalArgumentException) { // TransactionRequiredException
+                // plus logging - newReview is not an @Entity
+                return "Could not save the review.";
+            }
+            try {
+                movieRepository.save(movie);
+            } catch (Exception IllegalArgumentException) {
+                return "Could not update the movie.";
+            }
+            return "Review saved.";
+        } else {
+            return "No review added";
         }
-        catch(Exception IllegalArgumentException) {
-            return "Could not save the review.";
-        }
-        try {
-            movieRepository.save(movie);
-        }
-        catch(Exception IllegalArgumentException) {
-            return "Could not update the movie.";
-        }
-        return "Review saved.";
     }
 
     public boolean checkIfReviewInDb(String author, Long id) {

@@ -5,10 +5,10 @@ import com.codecool.freshcucumbersbackend.entity.Review;
 import com.codecool.freshcucumbersbackend.repository.MovieRepository;
 import com.codecool.freshcucumbersbackend.repository.ReviewRepository;
 import com.codecool.freshcucumbersbackend.repository.MovieStorage;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.HashSet;
@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Set;
 
 @Component
+@PropertySource(value = "application.properties")
 public class OMDbApiHandler {
 
     @Autowired
@@ -33,13 +34,20 @@ public class OMDbApiHandler {
     @Autowired
     MovieStorage movieStorage;
 
-    private static final String key = "e3e4583e";
-    private static final String apiUrl = "http://www.omdbapi.com/";
+    @Value(value = "${omdbApiKey}")
+    private String omdbApiKey;
+
+    @Value(value= "${omdbApiUrl}")
+    private String omdbApiUrl;
+
+/*    private static final String omdbApiKey = "e3e4583e";
+    private static final String omdbApiUrl = "http://www.omdbapi.com/";*/
+
 
     public Movie getSearchedMovieByTitle(String search) {
 
 
-        String url = apiUrl + "?t=" + search + "&apikey=" + key;
+        String url = omdbApiUrl + "?t=" + search + "&apikey=" + omdbApiKey;
 
         Movie searchedMovie = restTemplate
                 .getForObject(url, Movie.class);

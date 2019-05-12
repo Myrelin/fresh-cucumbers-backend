@@ -50,7 +50,7 @@ public class AppConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/movie/index").permitAll()
                 .antMatchers(HttpMethod.GET, "/movieDetails").permitAll()
                 .antMatchers(HttpMethod.GET, "/movie/search").permitAll()
-                .antMatchers(HttpMethod.GET, "/movie/addreviewtomovie").authenticated();
+                .antMatchers(HttpMethod.GET, "/movie/addreviewtomovie").permitAll();
 
     }
 
