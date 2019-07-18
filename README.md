@@ -26,10 +26,15 @@ To try or test this project, several environmental variables will need to be set
 Environmental variables: 
 
 DB_USERNAME: *
+
 DB_PASSWORD:
+
 TMDB_APIKEY You receive this after registering on the site
+
 TMDB_APIURL: https://api.themoviedb.org/3/ (base URL)
+
 OMDB_APIKEY: You receive this after registering on the site
+
 OMDB_APIURL: http://www.omdbapi.com/ (base URL)
 
 * A note on psql. If you are using the default user (postgres) after installation, there is no default password.
